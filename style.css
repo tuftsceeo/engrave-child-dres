@@ -1,0 +1,18 @@
+/*
+Theme Name: Engrave-child
+Theme URI: http://www.thinkupthemes.com/themes/engrave/
+Author: Val Ng
+Author URI: http://www.valndesign.com
+Description: Modified Engrave theme to be compatible with SmartPost
+Template: Engrave
+Version: 1.0.0
+License: GNU General Public License
+License URI: /licenses/license.txt
+Tags: black, dark, one-column, two-columns, right-sidebar, left-sidebar, flexible-width, custom-header, custom-menu, flexible-width, full-width-template, theme-options, threaded-comments, editor-style, featured-images, post-formats, sticky-post
+*/
+
+
+
+h1 {
+	background: white;
+}
