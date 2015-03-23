@@ -149,3 +149,31 @@ function login_menu_item( $items ){
 }
 add_filter( 'wp_nav_menu_items', 'login_menu_item' );
 
+function Engrave_widgets_init() {
+	$sp_cat_sidebar_id = register_sidebar( array(
+		'name' => __( 'Category Header Widget Area', 'Engrave' ),
+		'id' => 'sidebar-4',
+		'description' => __( 'Appears in every category page in the header area below the category title and description', 'Engrave' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	/**
+	 * Add SmartPost global definitions to be used by SP plugin (if it is available)
+	 */
+	define('SP_CAT_SIDEBAR', $sp_cat_sidebar_id);
+}
+add_action( 'widgets_init', 'Engrave_widgets_init' );
+
+/**
+ * Keeps sidebars consistent on empty category pages (i.e. categories with no posts).
+ */
+function engrave_fix_empty_category_sidebar_issue(){
+	global $post;
+	if( is_null( $post ) && is_archive() ){
+		$post = new stdClass();
+		$post->post_type = 'post';
+	}
+}
+add_action( 'wp_enqueue_scripts', 'engrave_fix_empty_category_sidebar_issue', '10' );
